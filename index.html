@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer data-domain="rouplou.dev" src="https://stats.rouplou.dev/js/script.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Hybralerte</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="hypePriceBadge">
+        <img src="hype_logo.png" alt="HYPE Logo" id="hypeLogo">
+        <span id="hypePriceText">Loading...</span>
+    </div>
+    <div id="container">
+        <!-- Colonne gauche : LP checker -->
+        <div id="left">
+            <h1>LP Range Alert</h1>
+            <div class="wallet-input-group">
+                <input id="wallet" type="text" placeholder="Wallet Address" />
+                <script src="addNewWallet.js"></script>
+                <button onclick="startMonitoring()">Start</button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px; margin-top: 10px;">
+                <span class="switch-label">Alert : Out of range</span>
+                <label class="switch">
+                    <input type="checkbox" id="warnNearRange">
+                    <span class="slider"></span>
+                </label>
+                <span class="switch-label">Near out of range (10%)</span>
+            </div>
+            <div id="points" style="margin-top: 10px; font-size: 1.1em;"></div>
+            <div id="positions"></div>
+            <canvas id="pointsChart" height="250"></canvas>
+            <canvas id="rankChart" height="250"></canvas>
+            <audio id="alertSound" src="sound_effect.mp3" preload="auto"></audio>
+        </div>
+
+        <!-- Colonne droite : classement des pools -->
+        <div id="right">
+            <h1>Ranking : Boost / Active TVL</h1>
+            <p style="font-style: italic; font-size: 0.9em;">Not perfectly accurate, but built with the best data I can
+                get. (NFA DYOR)</p>
+            <p id="lastUpdate" style="font-size: 0.9em;"></p>
+            <p id="selectedRangeLabel" style="font-weight: bold; font-size: 0.95em;"></p>
+            <div id="rangeButtons" style="margin-bottom: 10px;">
+                <button onclick="setRange(null)">Full</button>
+                <button onclick="setRange(10)">±10%</button>
+                <button onclick="setRange(5)">±5%</button>
+                <button onclick="setRange(2)">±2%</button>
+                <button onclick="setRange(1)">±1%</button>
+                <button onclick="setRange(0.5)">±0.5%</button>
+                <label class="switch">
+                    <input type="checkbox" id="excludeLowTVL" onchange="updatePoolsTable()" checked>
+                    <span class="slider"></span>
+                </label>
+                <span class="switch-label">Exclude TVL &lt; 50k$</span>
+            </div>
+            <p style="font-style: italic; font-size: 0.9em;">Size of range for being considered as "Active TVL"</p>
+            <table id="poolTable">
+                <thead>
+                    <tr>
+                        <th style="width: 2.5rem;">#</th>
+                        <th class="col-pair">Pair</th>
+                        <th class="col-boost">Boost</th>
+                        <th class="col-tvl">TVL ($)</th>
+                        <th class="col-inrange">TVL in range (%)</th>
+                        <th class="col-ratio">Ratio (×10⁻⁶)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <footer id="support">
+        <h1>💙 Thx for your support ! 💙</h1>
+
+        <div class="referral">
+            <h2>🔗 my HyperEVM ref links :</h2>
+
+            <ul>
+                <li><a href="https://www.hybra.finance/?code=WA7VSS" target="_blank">Hybra</a></li>
+                <li><a href="https://app.hyperbloom.xyz/?ref=f6f5c780-0" target="_blank">Hyperbloom</a></li>
+                <li><a href="https://app.hyperswap.exchange/#/swap?referral=Rouplou" target="_blank">Hyperswap</a></li>
+                <li><a href="https://www.usefelix.xyz/?ref=1403B717" target="_blank">Felix</a></li>
+                <li><a href="https://app.hyperlend.finance/?ref=ROUPLOU" target="_blank">Hyperlend</a></li>
+                <li><a href="https://app.hypurr.fi/buddies/8893086" target="_blank">Hypurrfi</a></li>
+                <li><a href="https://www.prjx.com/@rouplou" target="_blank">Project X</a></li>
+                <li><a href="https://app.hyperbeat.org/earn?referral=E3653EA0" target="_blank">Hyperbeat</a></li>
+                <li><a href="https://www.gliquid.xyz?referral=uQYiQOkJ" target="_blank">Gliquid</a></li>
+            </ul>
+        </div>
+
+        <div class="donation">
+            <h2>💸 Donation address (EVM)</h2>
+            <code style="font-size: 0.9em;">0xE0C8Ef01368a029ecbc4De2a93792AF3D4e883b6</code>
+            <h2>💸 Donation address (SOL)</h2>
+            <code style="font-size: 0.9em;">5F15nGw6eTJoTXSrRm8PoM2MDJswjNRgAeHgyCDanNnK</code>
+            <h2>💸 Donation address (BTC)</h2>
+            <code style="font-size: 0.9em;">bc1qfx3fj8zx0dxt0jrvm0hqpzd3txjcp9nyyff0hl</code>
+            <p>(Big thx if you send me something ! 🙏)</p>
+        </div>
+    </footer>
+    <a href="#support" id="supportButton">Support Me !</a>
+
+
+    <script src="trackPools.js"></script>
+    <script src="rangeSwitcher.js"></script>
+    <script src="rankPools.js"></script>
+    <script src="hypePrice.js"></script>
+    <script src="uiControls.js"></script>
+    <script src="buttonAnimation.js"></script>
+</body>
+
+</html>

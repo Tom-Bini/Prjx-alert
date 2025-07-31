@@ -1,0 +1,13 @@
+# Base de données
+*.db
+
+# Environnement virtuel Python
+venv/
+.venv/
+
+# Fichiers de config sensibles
+*.env
+
+# Cache Python
+__pycache__/
+*.pyc
