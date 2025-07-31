@@ -140,7 +140,8 @@ async function updatePoolsTable() {
             ? 1
             : calcActiveTVL(pool, rangePercent);
         const fees24h = parseFloat(pool.poolDayData?.[0]?.feesUSD ?? 0);
-        const score = fees24h / (tvlActive || 1);
+        const tvlActiveUSD = pool.totalValueLockedUSD * tvlActive;
+        const score = fees24h * 100000 / (tvlActiveUSD || 1);
 
         return {
             id: pool.id,
@@ -161,7 +162,8 @@ async function updatePoolsTable() {
     const ranked = mergedPools
         .filter(p => {
             const passesTVL = !excludeLowTVL || p.tvlUSD >= 50000;
-            return passesTVL && p.score > 0;
+            const passesFees = p.feesUSD >= 50;
+            return passesTVL && passesFees && p.score > 0;
         })
         .sort((a, b) => b.score - a.score);
 
