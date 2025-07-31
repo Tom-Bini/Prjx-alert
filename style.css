@@ -3,12 +3,11 @@
   --bg-card: #1E293B;
   --text-main: #E2E8F0;
   --text-secondary: #94A3B8;
-  --accent-green: #22C55E;
-  --accent-green-hover: #16A34A;
+  --accent-green: #FACC15; /* Jaune vif */
+  --accent-green-hover: #EAB308; /* Jaune plus foncé */
   --border-color: #334155;
   --error: #EF4444;
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -279,7 +278,7 @@ button:hover {
 .chart-icon {
   width: 16px;
   height: 16px;
-  filter: brightness(0) saturate(100%) invert(62%) sepia(60%) saturate(380%) hue-rotate(85deg) brightness(95%) contrast(90%);
+  filter: brightness(0) saturate(100%) invert(79%) sepia(94%) saturate(453%) hue-rotate(1deg) brightness(97%) contrast(96%);
   opacity: 0.85;
   transition: opacity 0.2s ease;
 }
