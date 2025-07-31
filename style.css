@@ -203,7 +203,7 @@ button:hover {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .position-card.in-range {
-  border-left-color: var(--accent-green);
+  border-left-color: #22C55E;
 }
 
 .position-card.out-range {
