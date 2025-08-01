@@ -235,6 +235,7 @@ button:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   color: var(--text-main);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 .position-card.in-range {
   border-left-color: #22C55E;
@@ -458,10 +459,19 @@ button:hover {
   z-index: 2;
 }
 
-.position-btn {
+.mute-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.position-btn {
   background-color: var(--accent-green);
   color: black !important;
   font-weight: 600;
@@ -471,12 +481,6 @@ button:hover {
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
-  transition: text-decoration 0.2s ease;
-  appearance: none;
-  -webkit-appearance: none;
-  outline: none;
-  box-shadow: none;
-  margin-top: 5px;
 }
 
 .position-btn:hover,
