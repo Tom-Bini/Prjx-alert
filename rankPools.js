@@ -162,7 +162,8 @@ async function updatePoolsTable() {
     const ranked = mergedPools
         .filter(p => {
             const passesTVL = !excludeLowTVL || p.tvlUSD >= 50000;
-            const passesFees = p.feesUSD >= 50;
+            const minFees = parseFloat(document.getElementById("minFees").value) || 0;
+            const passesFees = p.feesUSD >= minFees;
             return passesTVL && passesFees && p.score > 0;
         })
         .sort((a, b) => b.score - a.score);

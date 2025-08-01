@@ -256,7 +256,7 @@ button:hover {
   gap: 0.5rem;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 300px;
+  width: 100%;
 }
 
 .pair-name {
@@ -545,4 +545,8 @@ canvas {
   max-width: 100%;
   display: block;
   margin-top: 20px;
+}
+
+#minFees {
+  width: 75px;
 }

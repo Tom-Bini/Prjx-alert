@@ -55,6 +55,17 @@
                 <button onclick="setRange(2)">±2%</button>
                 <button onclick="setRange(1)">±1%</button>
                 <button onclick="setRange(0.5)">±0.5%</button>
+            </div>
+            <div id="settingsButtons">
+                <label for="minFees">Min Fees 24h :</label>
+                <select id="minFees" onchange="updatePoolsTable()">
+                    <option value="0">No filter</option>
+                    <option value="10">10$</option>
+                    <option value="50" selected>50$</option>
+                    <option value="100">100$</option>
+                    <option value="500">500$</option>
+                    <option value="1000">1000$</option>
+                </select>
                 <label class="switch">
                     <input type="checkbox" id="excludeLowTVL" onchange="updatePoolsTable()" checked>
                     <span class="slider"></span>
@@ -67,7 +78,7 @@
                     <tr>
                         <th style="width: 2.5rem;">#</th>
                         <th class="col-pair">Pair</th>
-                        <th class="col-boost">Fees</th>
+                        <th class="col-boost">Fees 24h</th>
                         <th class="col-tvl">TVL</th>
                         <th class="col-inrange">TVL in range</th>
                         <th class="col-ratio">Score</th>
