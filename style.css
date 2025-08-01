@@ -583,3 +583,31 @@ canvas {
 #minFees {
   width: 75px;
 }
+
+#volumeSlider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 120px;
+  height: 6px;
+  background: var(--bg-card); /* gris sombre */
+  border-radius: 4px;
+  outline: none;
+}
+
+#volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--accent-green); /* jaune accent */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#volumeSlider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  cursor: pointer;
+}
